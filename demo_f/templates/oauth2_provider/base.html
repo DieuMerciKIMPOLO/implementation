@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Dieu merci</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static "bootstrap/dist/bootstrap.min.css"%}">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    {% endblock css %}
+
+<style>
+body{
+  font-family: cambria;
+}
+input, textarea, select{
+  width: 500px;
+}
+textarea{
+  height: 80px;
+}
+.row-header{
+    margin:0px auto;
+    padding:0px;
+}
+
+.row-content {
+    margin:0px auto;
+    padding: 10px 0px 0px 10px;
+    border-bottom: 1px ridge;
+    min-height:400px;
+}
+
+.footer{
+    background-color: #D1C4E9;
+    margin:0px auto;
+    padding: 20px 0px 20px 0px;
+}
+
+.jumbotron{
+    padding: 10px 30px 0px 30px;
+    /*padding: 70px 30px 70px 30px;*/
+    margin: 0px auto;
+    background: #2980B9;
+    /*background: #9575CD;*/
+    color :floralwhite;
+}
+.nav-link{
+font-weight: bold;
+color: white;
+}
+label{
+  font-weight: bold;
+}
+.active{
+  background-color: white;
+  color: black;
+  font-weight: bold;
+}
+address{
+    font-size: 80%;
+    margin: 0px;
+    color: #0f0f0f;
+}
+.oauth2{
+  color: red;
+}
+    </style>
+</head>
+                    <!--p>We take inspiration from the World's best cuisines, and create a unique fusion experience. Our lipsmacking creations will tickle your culinary senses!</p-->
+<body>
+
+    <header class="jumbotron">
+        <div class="container">
+            <div class="row row-header">
+                <div class="clo-12 col-sm-8">
+                    <h1>Le Gestionnaire des applications <b class="oauth2">Oauth2</b></h1>
+
+                    <div id="util"></div>
+                    <p>
+                        {% block menu %}
+                          <ul class="nav nav-pills nav-fill">
+                          <li class="nav-item">
+                            <a class="nav-link " href="{% url "oauth2_provider:register" %}">Enregistrer une application</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link " href="{% url "oauth2_provider:list" %}">Liste des applications</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Front end</a>
+                          </li>
+                        </ul>
+                        {% endblock menu %}
+                    </p>
+
+                </div>
+                <div class="col col-sm">
+                </div>
+            </div>
+        </div>
+    </header>
+<div class="container">
+  <div class="row-content">
+    {% block content %}
+    {% endblock content %}
+  </div>
+</div>
+
+</body>
+<footer class="footer">
+        <div class="container">
+            <div class="row">             
+                <div class="col-5 offset-1 col-sm-2">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <!--li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="#">Contact</a></li-->
+                    </ul>
+                </div>
+                <div class="col-6 col-sm-5">
+                    <h5>Les adresses</h5>
+                    <address>
+                      AIMS-Sénégal<br>
+                      Mbour, Sénégal<br>
+                      Tel.: +221763212081<br>
+                      Email: <a href="dieumerci.k.nkokolo@aims-senegal.org">dieumerci.k.nkokolo@aims-senegal.org</a>
+                   </address>
+                </div>
+                <div class="col col-sm-4 align-self-center">
+                    <div   style="text-qlign: center">
+                        <a href="http://google.com/+">Google+</a>
+                        <a href="http://www.facebook.com/profile.php?id=">Facebook</a>
+                        <a href="http://www.linkedin.com/in/">LinkedIn</a>
+                        <a href="http://twitter.com/">Twitter</a>
+                        <a href="http://youtube.com/">YouTube</a>
+                        <a href="mailto:">Mail</a>
+                    </div>
+                </div>
+           </div>
+           <div class="row justify-content-center">             
+                <div class="col-auto">
+                    <p>© Copyright 2018 Oauth2_Demo</p>
+                </div>
+           </div>
+        </div>
+    </footer>
+</html>

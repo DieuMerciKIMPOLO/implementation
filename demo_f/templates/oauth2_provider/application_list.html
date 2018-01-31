@@ -1,0 +1,48 @@
+{% extends "oauth2_provider/base.html" %}
+
+{% load i18n %}
+{% block content %}
+    <div class="block-center">
+        <h3 class="block-center-heading">{% trans "Vos Applications" %}</h3>
+        {% if applications %}
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nom</th>
+                      <th scope="col">Type de client</th>
+                      <th scope="col">Type de grant</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for application in applications %}
+                        <tr>
+                          <th scope="row">{{ application.id}}</th>
+                          <td>{{ application.name }}</td>
+                          <td>{{ application.client_type }}</td>
+                          <td>{{ application.authorization_grant_type }}</td>
+                          <th><a href="{{ application.get_absolute_url }}"><button type="button" class="btn btn-warning">Modifier</button></a></th>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+            <a class="btn btn-success" href="{% url "oauth2_provider:register" %}">Engistrer une nouvelle Application</a>
+        {% else %}
+            <p>{% trans "No applications defined" %}. <a href="{% url 'oauth2_provider:register' %}">{% trans "Click here" %}</a> {% trans "if you want to register a new one" %}</p>
+        {% endif %}
+    </div>
+{% endblock content %}
+{% block menu %}
+  <ul class="nav nav-pills nav-fill">
+  <li class="nav-item">
+    <a class="nav-link " href="{% url "oauth2_provider:register" %}">Enregistrer une application</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url "oauth2_provider:list" %}">Liste des applications</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="http://localhost:3000/">Front end</a>
+  </li>
+</ul>
+{% endblock menu %}

@@ -1,0 +1,67 @@
+
+<style type="text/css">
+.block-center{
+
+    padding-left:35%;
+    padding-right: 25%; 
+    padding-top: 15%;
+}
+b{
+    color: green;
+    text-align: center;
+}
+.d{
+ border: red solid 2px;
+ padding-left: 20%;
+ background-color: #c9b9dc;
+}
+</style>
+{% block css %}
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+{% endblock css %}
+{% load i18n %}
+{% block content %}
+   <div class="row">
+      <div class="col-lg-4">
+
+      </div>      
+      <div class="col-lg-4 ">
+    <div class="block-center">
+        {% if not error %}
+            <form id="authorizationForm" method="post" class="d">
+                <h3 class="block-center-heading">{% trans "Autorisez vous l'application" %} <br>
+                    <b>{{ application.name }}</b></h3>
+                {% csrf_token %}
+
+                {% for field in form %}
+                    {% if field.is_hidden %}
+                        {{ field }}
+                    {% endif %}
+                {% endfor %}
+
+                <p>{% trans " à utiliser toutes vos informations sur l' API Demo?" %}</p>
+
+                {{ form.errors }}
+                {{ form.non_field_errors }}
+
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="submit" class="btn btn-danger" value="Annuler"/>
+                        <input type="submit" class="btn btn-success" name="allow" value="Autoriser"/>
+                    </div>
+                </div>
+            </form>
+
+        {% else %}
+            <h2>Error: {{ error.error }}</h2>
+            <p>{{ error.description }}</p>
+        {% endif %}
+    </div>
+
+      </div>     
+      <div class="col-lg-4">
+
+      </div>
+   </div>
+    
+{% endblock %}
