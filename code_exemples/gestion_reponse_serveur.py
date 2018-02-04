@@ -1,5 +1,5 @@
 """
-Le DFR met à la disposition des développeurs labibliothèque sous le chemin suivant:
+Le DFR met à la disposition des développeurs la bibliothèque sous le chemin suivant:
 from rest_framework import status contenant tout les code de message HTTP. De plus avec le DRF les response sont gérées 
 avec l'objet Response disponible sous le chemin from rest_framework.response import Response.
 Le conseil ici c'est d'utiliser les réponse générique accompagnées de code appropriés
