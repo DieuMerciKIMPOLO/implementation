@@ -40,6 +40,25 @@ def CheckPassword(request,ch_password):
 Aussi le DRF fournit un système de stockage de mots de passe souple et emploie PBKDF2 par défaut. 
 Avec une fonction de hachage SHA256, un mécanisme d’étirement de mot de passe recommandé par le NIST
 Cela devrait suffire pour la plupart des utilisateurs : c’est un algorithme bien sécurisé et exigeant 
-d’énormes quantités de puissance de calcul pour être cassé.
-https://docs.djangoproject.com/fr/2.0/topics/auth/passwords/
+d’énormes quantités de puissance de calcul pour être cassé. Il est également possible d'utiliser 
+les password validators comme 
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 9,
+        }
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+ voir----> https://docs.djangoproject.com/fr/2.0/topics/auth/passwords/
 """
