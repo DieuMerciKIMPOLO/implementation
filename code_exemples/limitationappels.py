@@ -51,5 +51,6 @@ throttle_scope = 'user'
 throttle_scope = 'anon'
 
 """
-Pour plus de détails prière de consulter le lien suivant:http://www.django-rest-framework.org/api-guide/throttling/
+Pour plus de détails prière de consulter le lien suivant:
 """
+http://www.django-rest-framework.org/api-guide/throttling/
